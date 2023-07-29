@@ -1,0 +1,76 @@
+{
+    "configurations": [
+        {
+            "type": "lldb",
+            "request": "launch",
+            "sourceLanguages": [
+                "swift"
+            ],
+            "name": "Debug FileTransform",
+            "program": "${workspaceFolder:FileTransform}/.build/debug/FileTransform",
+            "args": [],
+            "cwd": "${workspaceFolder:FileTransform}",
+            "preLaunchTask": "swift: Build Debug FileTransform"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "sourceLanguages": [
+                "swift"
+            ],
+            "name": "Release FileTransform",
+            "program": "${workspaceFolder:FileTransform}/.build/release/FileTransform",
+            "args": [],
+            "cwd": "${workspaceFolder:FileTransform}",
+            "preLaunchTask": "swift: Build Release FileTransform"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "sourceLanguages": [
+                "swift"
+            ],
+            "name": "Debug Script",
+            "program": "${workspaceFolder:FileTransform}/.build/debug/Script",
+            "args": [],
+            "cwd": "${workspaceFolder:FileTransform}",
+            "preLaunchTask": "swift: Build Debug Script"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "sourceLanguages": [
+                "swift"
+            ],
+            "name": "Release Script",
+            "program": "${workspaceFolder:FileTransform}/.build/release/Script",
+            "args": [],
+            "cwd": "${workspaceFolder:FileTransform}",
+            "preLaunchTask": "swift: Build Release Script"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "sourceLanguages": [
+                "swift"
+            ],
+            "name": "Debug parser",
+            "program": "${workspaceFolder:FileTransform}/.build/debug/parser",
+            "args": [],
+            "cwd": "${workspaceFolder:FileTransform}",
+            "preLaunchTask": "swift: Build Debug parser"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "sourceLanguages": [
+                "swift"
+            ],
+            "name": "Release parser",
+            "program": "${workspaceFolder:FileTransform}/.build/release/parser",
+            "args": [],
+            "cwd": "${workspaceFolder:FileTransform}",
+            "preLaunchTask": "swift: Build Release parser"
+        }
+    ]
+}
