@@ -31,6 +31,14 @@ extension String {
 }
 
 extension Date {
+    var millisecondsSince1970: Int64 {
+        Int64(timeIntervalSince1970 * 1000.0)
+    }
+
+    init(milliseconds: Int) {
+        self = Date(timeIntervalSince1970: TimeInterval(milliseconds / 1000))
+    }
+
     func toString(withFormat _: String = "yyyy-MM-dd HH:mm:ss") -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.timeZone = TimeZone(identifier: "UTC")

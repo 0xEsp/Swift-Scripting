@@ -20,7 +20,11 @@ enum AvailableChatNames: String, CaseIterable {
         default: name = AvailableChatNames.unowned.rawValue
         }
 
-        return ChatResponseAuthor(id: name.generateUUID().uuidString, firstName: name)
+        return ChatResponseAuthor(
+            id: name.generateUUID().uuidString,
+            firstName: name,
+            imageUrl: "https://fastly.picsum.photos/id/43/200/300.jpg?hmac=F_cVhLISpNmZ9wjirHfMJgX9rQzMYJbJE1xzfwmV36c"
+        )
     }
 }
 
@@ -66,11 +70,11 @@ struct ChatResponse: Codable {
         var container = encoder.container(keyedBy: CodingKeys.self)
 
         try container.encode(id, forKey: .id)
-        try container.encode(createdAt.toString(), forKey: .createdAt)
+        try container.encode(createdAt.millisecondsSince1970, forKey: .createdAt)
         try container.encode(author, forKey: .author)
         try container.encode(type, forKey: .type)
         try container.encode(status, forKey: .status)
-        try container.encode(text, forKey: .text)
+        try container.encode(text.description, forKey: .text)
     }
 }
 
@@ -78,6 +82,7 @@ struct ChatResponseAuthor: Codable {
     let id: String
     let firstName: String
     // let lastName: String
+    let imageUrl: String
 }
 
 // MARK: - Methods
@@ -87,7 +92,7 @@ func mapChatModelToNewInstance(_ oldModel: [ChatRequest]) -> [ChatResponse] {
 
     for (index, request) in oldModel.enumerated() {
         let messageDateAndPerson = request.date.components(separatedBy: " - ")
-        let requestDate = messageDateAndPerson.first?.toDate(withFormat: "dd-MM-yy HH:mm:ss")
+        let requestDate = messageDateAndPerson.first?.toDate()
         let requestPerson = messageDateAndPerson.last?.components(separatedBy: ": ")
 
         let responseDate = requestDate ?? responses[index - 1].createdAt
