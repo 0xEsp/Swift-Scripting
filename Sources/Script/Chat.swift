@@ -13,17 +13,24 @@ enum AvailableChatNames: String, CaseIterable {
 
     func author() -> ChatResponseAuthor {
         var name = ""
+        var image = ""
 
         switch self {
-        case .manu, .manu2: name = AvailableChatNames.manu2.rawValue
-        case .olga, .olga2: name = AvailableChatNames.olga.rawValue
-        default: name = AvailableChatNames.unowned.rawValue
+        case .manu, .manu2:
+            name = AvailableChatNames.manu2.rawValue
+            image = "https://i.ibb.co/dtcmvdh/268245483-710501743532530-3059860760425890779-n.jpg"
+        case .olga, .olga2:
+            name = AvailableChatNames.olga.rawValue
+            image = "https://i.ibb.co/YdQpPbv/295182369-201822648851269-2455018014410769309-n.jpg"
+        default:
+            name = AvailableChatNames.unowned.rawValue
+            image = "https://i.ibb.co/mqwvyD0/aga-1200x900.jpg"
         }
 
         return ChatResponseAuthor(
             id: name.generateUUID().uuidString,
             firstName: name,
-            imageUrl: "https://fastly.picsum.photos/id/43/200/300.jpg?hmac=F_cVhLISpNmZ9wjirHfMJgX9rQzMYJbJE1xzfwmV36c"
+            imageUrl: image
         )
     }
 }
